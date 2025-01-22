@@ -122,12 +122,13 @@ DisplayTitleScreen:
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
 
-IF DEF(_RED)
-	ld a, STARTER1 ; which Pokemon to show first on the title screen
-ENDC
-IF DEF(_BLUE)
-	ld a, STARTER2 ; which Pokemon to show first on the title screen
-ENDC
+; IF DEF(_RED)
+; 	ld a, STARTER1 ; which Pokemon to show first on the title screen
+; ENDC
+; IF DEF(_BLUE)
+; 	ld a, STARTER2 ; which Pokemon to show first on the title screen
+; ENDC
+	ld a, SLOWPOKE ; show Slowpoke first
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite
 
@@ -274,7 +275,7 @@ TitleScreenPickNewMon:
 .loop
 ; Keep looping until a mon different from the current one is picked.
 	call Random
-	and $f
+	and $3 ; number of TitleMons - 1
 	ld c, a
 	ld b, 0
 	ld hl, TitleMons
