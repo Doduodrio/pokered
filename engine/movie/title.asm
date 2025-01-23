@@ -60,7 +60,7 @@ DisplayTitleScreen:
 	ld a, BANK(PokemonLogoGraphics)
 	call FarCopyData2          ; second chunk
 	ld hl, Version_GFX
-	ld de, vChars2 tile $60 + (10 tiles - (Version_GFXEnd - Version_GFX) * 2) / 2
+	ld de, vChars2 tile $61 ; (10 tiles - (Version_GFXEnd - Version_GFX) * 2) / 2
 	ld bc, Version_GFXEnd - Version_GFX
 	ld a, BANK(Version_GFX)
 	call FarCopyDataDouble
@@ -403,12 +403,13 @@ PrintGameVersionOnTitleScreen:
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-IF DEF(_RED)
-	db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
-ENDC
-IF DEF(_BLUE)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
-ENDC
+; IF DEF(_RED)
+; 	db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version"
+; ENDC
+; IF DEF(_BLUE)
+; 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
+; ENDC
+	db $61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Duo's Version"
 
 DebugNewGamePlayerName:
 	db "NINTEN@"
