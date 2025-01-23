@@ -10,8 +10,8 @@ PlayIntro:
 	ldh [hJoyHeld], a
 	inc a
 	ldh [hAutoBGTransferEnabled], a
-	call PlayShootingStar
-	call PlayIntroScene
+	; call PlayShootingStar
+	; call PlayIntroScene
 	call GBFadeOutToWhite
 	xor a
 	ldh [hSCX], a
